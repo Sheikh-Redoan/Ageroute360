@@ -5,6 +5,8 @@ import StatsBar from '../components/sections/home/StatsBar'
 import FeaturedProjects from '../components/sections/home/FeaturedProjects'
 import MissionBlock from '../components/sections/home/MissionBlock'
 import MapPreviewCTA from '../components/sections/home/MapPreviewCTA'
+import WhyPlatform from '../components/sections/home/WhyPlatform'
+import NationalImpact from '../components/sections/home/NationalImpact'
 import CTABanner from '../components/ui/CTABanner'
 
 const HomePage = () => {
@@ -16,6 +18,8 @@ const HomePage = () => {
       <FeaturedProjects />
       <MissionBlock />
       <MapPreviewCTA />
+      <WhyPlatform />
+      <NationalImpact/>
       <CTABanner />
     </>
   )

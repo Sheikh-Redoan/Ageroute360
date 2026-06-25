@@ -8,9 +8,10 @@ export default {
     extend: {
       colors: {
         brand: {
-          amber: '#F2B52B',
+          amber: '#F9A627',
           dark: '#060D1A',
           navy: '#061123',
+          teal: '#183546',
           emerald: '#00D491',
           light: '#F0F5FB',
         }
