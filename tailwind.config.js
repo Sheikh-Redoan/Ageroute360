@@ -8,16 +8,18 @@ export default {
     extend: {
       colors: {
         brand: {
-          amber: '#F5A623',
-          dark: '#0D1B2A',
-          navy: '#1A2E44',
+          amber: '#F2B52B',
+          dark: '#060D1A',
+          navy: '#061123',
         }
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
+        jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
+        sora: ['Sora', 'sans-serif'],
       },
       backgroundImage: {
-        'hero-gradient': 'linear-gradient(to bottom, rgba(13,27,42,0.7), rgba(13,27,42,0.95))',
+        'hero-gradient': 'linear-gradient(to right, rgba(6,13,26,0.95) 0%, rgba(6,17,35,0.7) 100%)',
       }
     },
   },

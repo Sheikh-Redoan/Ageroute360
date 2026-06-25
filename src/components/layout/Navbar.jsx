@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const navigate = useNavigate()
 
   const links = [
-    { path: '/', label: 'Home' },
     { path: '/projects', label: 'Projects' },
     { path: '/map', label: 'Map' },
     { path: '/tenders', label: 'Tenders' },
@@ -16,75 +16,118 @@ const Navbar = () => {
   ]
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-brand-dark/80 backdrop-blur-md border-b border-brand-navy">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <Link to="/" className="text-2xl font-bold text-brand-amber">
-            AGEROUTE<span className="text-white">360</span>
+    <>
+      {/* Floating Navbar Container */}
+      <motion.nav 
+        initial={{ y: -100, opacity: 0, x: "-50%" }}
+        animate={{ y: 0, opacity: 1, x: "-50%" }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="fixed top-6 left-1/2 z-50 w-[95%] max-w-[1260px]"
+      >
+        {/* Glassmorphism Pill */}
+        <div className="flex items-center justify-between px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full shadow-2xl">
+          
+          {/* Logo Area */}
+          <Link to="/" className="flex items-center gap-3 group">
+            <img src="/src/assets/images/logo.png" alt="Ageroute Logo" className="w-full h-full object-contain p-1" />
           </Link>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8">
+          {/* Desktop Navigation Links */}
+          <div className="hidden lg:flex items-center gap-8">
             {links.map((link) => (
               <NavLink
                 key={link.path}
                 to={link.path}
                 className={({ isActive }) =>
-                  `text-sm font-medium transition-colors ${
-                    isActive ? 'text-brand-amber' : 'text-gray-300 hover:text-white'
+                  `relative font-jakarta text-base font-medium transition-colors duration-300 ${
+                    isActive ? 'text-white' : 'text-white/70 hover:text-white'
                   }`
                 }
               >
-                {link.label}
+                {({ isActive }) => (
+                  <>
+                    {link.label}
+                    {/* Active State Indicator Dot */}
+                    {isActive && (
+                      <motion.div 
+                        layoutId="nav-indicator"
+                        className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1 h-1 bg-brand-amber rounded-full"
+                      />
+                    )}
+                  </>
+                )}
               </NavLink>
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-white"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {isOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
-        </div>
-      </div>
+          {/* CTA Button & Mobile Toggle */}
+          <div className="flex items-center gap-4">
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => navigate('/tenders')}
+              className="hidden md:flex px-6 py-2.5 bg-brand-amber text-white text-base font-medium font-sans rounded-full hover:bg-amber-500 transition-colors shadow-[0_0_15px_rgba(242,181,43,0.3)]"
+            >
+              View Tenders
+            </motion.button>
 
-      {/* Mobile Menu */}
+            {/* Mobile Menu Button */}
+            <button
+              className="lg:hidden text-white p-2 rounded-full hover:bg-white/10 transition-colors"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {isOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
+        </div>
+      </motion.nav>
+
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="md:hidden bg-brand-navy overflow-hidden"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed inset-x-4 top-28 z-40 lg:hidden"
           >
-            <div className="px-4 py-4 space-y-3">
+            <div className="bg-brand-navy/95 backdrop-blur-xl border border-gray-700 rounded-2xl p-4 shadow-2xl flex flex-col space-y-2">
               {links.map((link) => (
                 <NavLink
                   key={link.path}
                   to={link.path}
                   onClick={() => setIsOpen(false)}
                   className={({ isActive }) =>
-                    `block py-2 text-sm font-medium ${
-                      isActive ? 'text-brand-amber' : 'text-gray-300'
+                    `px-4 py-3 rounded-xl font-jakarta text-base font-medium transition-all ${
+                      isActive ? 'bg-brand-amber/10 text-brand-amber' : 'text-gray-300 hover:bg-white/5 hover:text-white'
                     }`
                   }
                 >
                   {link.label}
                 </NavLink>
               ))}
+              <div className="pt-4 mt-2 border-t border-gray-700">
+                <button 
+                  onClick={() => {
+                    navigate('/tenders')
+                    setIsOpen(false)
+                  }}
+                  className="w-full py-3 bg-brand-amber text-white font-medium rounded-xl hover:bg-amber-500 transition-colors"
+                >
+                  View Tenders
+                </button>
+              </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </>
   )
 }
 
