@@ -86,7 +86,7 @@ const HeroSection = () => {
           </motion.div>
 
           {/* Heading (Fluid Typography) */}
-          <h1 className="text-[36px] sm:text-5xl md:text-6xl xl:text-7xl font-extrabold font-sora leading-[1.15] text-white">
+          <h1 className="text-[36px] sm:text-5xl md:text-6xl xl:text-6xl font-extrabold font-sora leading-[1.15] text-white">
             {["Connecting", "Guinea Through", "Transparent", "Roads."].map(
               (word, index) => (
                 <motion.div
