@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '../../hooks/useGSAP'
+import buildingFutureBg from '../../assets/images/BuildingtheFutureBG.png'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -39,7 +40,7 @@ const CTABanner = () => {
       >
         
         <img 
-          src="/src/assets/images/BuildingtheFutureBG.png" 
+          src={buildingFutureBg} 
           alt="Building the Future" 
           className="absolute inset-0 w-full h-full object-cover"
         />

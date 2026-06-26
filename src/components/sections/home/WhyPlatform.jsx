@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '../../../hooks/useGSAP'
+import whyPlatformBg from '../../../assets/images/WhythisplatformBackground.png'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -81,7 +82,7 @@ const WhyPlatform = () => {
   }, { scope: sectionRef })
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-24 lg:py-32 bg-brand-teal overflow-hidden relative max-[500px]:py-12" style={{ backgroundImage: "url('/src/assets/images/WhythisplatformBackground.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
+    <section ref={sectionRef} className="py-16 md:py-24 lg:py-32 bg-brand-teal overflow-hidden relative max-[500px]:py-12" style={{ backgroundImage: `url(${whyPlatformBg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
       
       <div className="absolute top-0 left-0 w-full h-px bg-white/10" />
       <div className="absolute bottom-0 left-0 w-full h-px bg-white/10" />

@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '../../../hooks/useGSAP'
+import featuredProject01 from '../../../assets/images/Featured Projects01.png'
+import featuredProject02 from '../../../assets/images/Featured Projects02.png'
+import featuredProject03 from '../../../assets/images/Featured Projects03.png'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -64,7 +67,7 @@ const FeaturedProjects = () => {
           {/* Main Card (Left) */}
           <div className="fp-card lg:col-span-7 relative group rounded-[24px] lg:rounded-3xl overflow-hidden h-[420px] sm:h-[500px] lg:h-[648px] cursor-pointer">
             <img 
-              src="/src/assets/images/Featured Projects01.png" 
+              src={featuredProject01} 
               alt="Conakry-Mamou Expressway" 
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
@@ -122,7 +125,7 @@ const FeaturedProjects = () => {
             {/* Top Minor Card */}
             <div className="fp-card relative group rounded-[24px] lg:rounded-3xl overflow-hidden h-[240px] sm:h-[280px] lg:h-[308px] cursor-pointer">
               <img 
-                src="/src/assets/images/Featured Projects02.png" 
+                src={featuredProject02} 
                 alt="N'Zérékoré Resurfacing" 
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
@@ -150,7 +153,7 @@ const FeaturedProjects = () => {
             {/* Bottom Minor Card */}
             <div className="fp-card relative group rounded-[24px] lg:rounded-3xl overflow-hidden h-[240px] sm:h-[280px] lg:h-[308px] cursor-pointer">
               <img 
-                src="/src/assets/images/Featured Projects03.png" 
+                src={featuredProject03} 
                 alt="Konkouré Bridge" 
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />

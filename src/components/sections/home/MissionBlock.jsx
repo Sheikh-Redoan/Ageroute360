@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "../../../hooks/useGSAP";
+import missionImage from "../../../assets/images/Our Mission01.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -68,7 +69,7 @@ const MissionBlock = () => {
         {/* Left Column: Image Area */}
         <div className="mission-image relative w-full rounded-[24px] lg:rounded-[36px] overflow-hidden bg-[#F0F5FB] aspect-square lg:aspect-[9/10] max-h-[380px] sm:max-h-[500px] lg:max-h-[640px] order-2 lg:order-1">
           <img
-            src="src/assets/images/Our Mission01.png"
+            src={missionImage}
             alt="Road Construction Verification"
             className="w-full h-full object-cover transition-transform duration-1000 hover:scale-105"
           />

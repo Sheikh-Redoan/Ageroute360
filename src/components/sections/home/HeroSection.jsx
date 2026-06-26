@@ -1,6 +1,8 @@
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
+import bannerImage from "../../../assets/images/banner.png";
+import vectorImage from "../../../assets/images/Vector.png";
 
 const HeroSection = () => {
   const navigate = useNavigate();
@@ -62,7 +64,7 @@ const HeroSection = () => {
     <section
       ref={containerRef}
       className="relative min-h-screen flex items-center pt-28 pb-20 bg-cover bg-center overflow-hidden"
-      style={{ backgroundImage: "url(/src/assets/images/banner.png)" }}
+      style={{ backgroundImage: `url(${bannerImage})` }}
     >
       <div className="relative z-10 w-full max-w-[1260px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8">
         {/* Left Column: Content */}
@@ -302,7 +304,7 @@ const HeroSection = () => {
       </div>
       {/* Bottom Vector Mask */}
       <img
-        src="/src/assets/images/Vector.png"
+        src={vectorImage}
         alt="bottom vector"
         className="absolute bottom-0 left-0 w-full object-cover z-20 pointer-events-none"
       />
@@ -335,5 +337,6 @@ const CompletionIcon = () => (
     <path d="M7.99984 9.33317C8.73622 9.33317 9.33317 8.73622 9.33317 7.99984C9.33317 7.26346 8.73622 6.6665 7.99984 6.6665C7.26346 6.6665 6.6665 7.26346 6.6665 7.99984C6.6665 8.73622 7.26346 9.33317 7.99984 9.33317Z" stroke="white" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
+
 
 export default HeroSection;
