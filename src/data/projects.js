@@ -9,7 +9,7 @@ export const projects = [
     startDate: '2023-01-15',
     endDate: '2024-12-31',
     category: 'Highway',
-    image: '/src/assets/images/project-1.jpg',
+    image: '/src/assets/images/Projects01.png',
     coordinates: [-17.4467, 14.6928]
   },
   {
@@ -22,7 +22,7 @@ export const projects = [
     startDate: '2022-03-10',
     endDate: '2023-08-20',
     category: 'Bridge',
-    image: '/src/assets/images/project-2.jpg',
+    image: '/src/assets/images/Projects02.png',
     coordinates: [-16.4897, 16.0179]
   },
   {
@@ -35,7 +35,7 @@ export const projects = [
     startDate: '2023-06-01',
     endDate: '2024-10-15',
     category: 'Road',
-    image: '/src/assets/images/project-3.jpg',
+    image: '/src/assets/images/Projects03.png',
     coordinates: [-16.0725, 14.1504]
   },
   {
@@ -48,7 +48,7 @@ export const projects = [
     startDate: '2022-11-05',
     endDate: '2025-03-30',
     category: 'Highway',
-    image: '/src/assets/images/project-4.jpg',
+    image: '/src/assets/images/Projects04.png',
     coordinates: [-16.9610, 14.4172]
   }
 ]
