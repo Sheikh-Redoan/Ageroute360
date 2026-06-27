@@ -27,7 +27,7 @@ function App() {
                   <Route index element={<HomePage />} />
                   <Route path="projects" element={<ProjectsPage />} />
                   <Route path="map" element={<MapPage />} />
-                  {/* <Route path="tenders" element={<TendersPage />} /> */}
+                  <Route path="tenders" element={<TendersPage />} />
                   {/* <Route path="companies" element={<CompaniesPage />} /> */}
                   {/* <Route path="reports" element={<ReportsPage />} /> */}
                   {/* <Route path="about" element={<AboutPage />} /> */}
