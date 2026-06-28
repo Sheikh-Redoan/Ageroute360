@@ -6,6 +6,7 @@ import CoreValues from '../components/sections/about/CoreValues'
 import Timeline from '../components/sections/about/Timeline'
 import CTABanner from '../components/ui/CTABanner'
 import AboutHero from '../components/sections/about/AboutHero'
+import LeadershipTeam from '../components/sections/about/LeadershipTeam'
 
 const AboutPage = () => {
   return (
@@ -14,8 +15,11 @@ const AboutPage = () => {
       <AboutHero/>
       <div className="max-w-7xl mx-auto px-4 py-16">
         <MissionPillars />
+      </div>
         <CoreValues />
+      <div className="max-w-7xl mx-auto px-4 py-16">
         <Timeline />
+        <LeadershipTeam />
       </div>
       <CTABanner />
     </>
