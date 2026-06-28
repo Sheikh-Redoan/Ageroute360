@@ -1,11 +1,23 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import Logo from "/src/assets/images/logo.png"
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [isDark, setIsDark] = useState(true)
   const navigate = useNavigate()
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY
+      // Change to dark text after scrolling past hero section (typically 600-800px)
+      setIsDark(scrollY < 500)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const links = [
     { path: '/projects', label: 'Projects' },
@@ -26,7 +38,11 @@ const Navbar = () => {
         className="fixed top-6 left-1/2 z-50 w-[95%] max-w-[1260px]"
       >
         {/* Glassmorphism Pill */}
-        <div className="flex items-center justify-between px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full shadow-2xl">
+        <div className={`flex items-center justify-between px-6 py-3 backdrop-blur-md border rounded-full shadow-2xl transition-all duration-300 ${
+          isDark 
+            ? 'bg-white/10 border-white/20' 
+            : 'bg-white/90 border-gray-200'
+        }`}>
           
           {/* Logo Area */}
           <Link to="/" className="flex items-center gap-3 group">
@@ -41,7 +57,9 @@ const Navbar = () => {
                 to={link.path}
                 className={({ isActive }) =>
                   `relative font-jakarta text-base font-medium transition-colors duration-300 ${
-                    isActive ? 'text-white' : 'text-white/70 hover:text-white'
+                    isDark
+                      ? isActive ? 'text-white' : 'text-white/70 hover:text-white'
+                      : isActive ? 'text-gray-900' : 'text-gray-600 hover:text-gray-900'
                   }`
                 }
               >
@@ -74,7 +92,9 @@ const Navbar = () => {
 
             {/* Mobile Menu Button */}
             <button
-              className="lg:hidden text-white p-2 rounded-full hover:bg-white/10 transition-colors"
+              className={`lg:hidden p-2 rounded-full transition-colors ${
+                isDark ? 'text-white hover:bg-white/10' : 'text-gray-900 hover:bg-gray-200'
+              }`}
               onClick={() => setIsOpen(!isOpen)}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

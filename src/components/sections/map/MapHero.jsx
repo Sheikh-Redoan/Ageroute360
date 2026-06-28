@@ -8,7 +8,14 @@ const MapHero = () => {
   const containerRef = useRef(null);
 
   useGSAP(() => {
-    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    const tl = gsap.timeline({ 
+      defaults: { ease: "power3.out" },
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 80%",
+        toggleActions: "play none none none"
+      }
+    });
 
     tl.fromTo(
       ".map-hero-overlay",
@@ -33,8 +40,9 @@ const MapHero = () => {
       const target = parseFloat(counter.getAttribute("data-target"));
       const isDecimal = target % 1 !== 0;
 
-      gsap.to(
+      tl.fromTo(
         counter,
+        { innerHTML: 0 },
         {
           innerHTML: target,
           duration: 2,
@@ -47,10 +55,10 @@ const MapHero = () => {
               : Math.round(val);
           },
         },
-        "-=0.4",
+        "-=1.6",
       );
     });
-  }, []);
+  }, { scope: containerRef });
 
   return (
     <section

@@ -72,8 +72,8 @@ const Timeline = () => {
 
                   
 
-                  <div className={`w-full md:w-1/2 flex flex-col pl-14 md:pl-0 ${isEven ? 'md:pr-10 md:items-end md:text-right lg:-mr-10' : 'md:pl-10 md:items-start md:text-left lg:-ml-10'} md:bg-contain md:bg-center md:bg-no-repeat`}
-                    style={{ backgroundImage: `url(${timelineBgImage})` }}
+                  <div className={`w-full md:w-1/2 flex flex-col pl-14 md:pl-0 ${isEven ? 'md:pr-10 md:items-end md:text-right lg:-mr-10' : 'md:pl-10 md:items-start md:text-left lg:-ml-10'} lg:bg-contain lg:bg-center lg:bg-no-repeat`}
+                    style={{ backgroundImage: window.innerWidth >= 1024 ? `url(${timelineBgImage})` : 'none' }}
                   >
                     
                     <span className="text-brand-amber text-xl md:text-2xl font-semibold font-sans bg-white px-1 translate-y-[-10px]">

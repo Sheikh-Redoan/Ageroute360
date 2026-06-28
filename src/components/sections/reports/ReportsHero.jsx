@@ -8,7 +8,14 @@ const ReportsHero = () => {
   const containerRef = useRef(null)
 
   useGSAP(() => {
-    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
+    const tl = gsap.timeline({ 
+      defaults: { ease: 'power3.out' },
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 80%",
+        toggleActions: "play none none none"
+      }
+    })
 
     // Fade in background overlay
     tl.fromTo(".reports-hero-overlay",

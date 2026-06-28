@@ -35,7 +35,14 @@ const ProjectsHero = () => {
   ]
 
   useGSAP(() => {
-    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
+    const tl = gsap.timeline({ 
+      defaults: { ease: 'power3.out' },
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 80%",
+        toggleActions: "play none none none"
+      }
+    })
 
     tl.fromTo(".hero-bg-overlay",
       { opacity: 0.5 },
@@ -55,17 +62,20 @@ const ProjectsHero = () => {
     const counters = gsap.utils.toArray('.stat-counter-value')
     counters.forEach((counter) => {
       const target = parseFloat(counter.getAttribute('data-target'))
-      gsap.to(counter, {
-        innerHTML: target,
-        duration: 2,
-        ease: "power2.out",
-        snap: { innerHTML: 1 },
-        onUpdate: function() {
-          counter.innerHTML = Math.round(this.targets()[0].innerHTML)
-        }
-      }, "-=0.4")
+      tl.fromTo(counter,
+        { innerHTML: 0 },
+        {
+          innerHTML: target,
+          duration: 2,
+          ease: "power2.out",
+          snap: { innerHTML: 1 },
+          onUpdate: function() {
+            counter.innerHTML = Math.round(this.targets()[0].innerHTML)
+          }
+        }, "-=1.6"
+      )
     })
-  }, [containerRef])
+  }, { scope: containerRef })
 
   return (
     <section ref={containerRef} className="relative pt-32 pb-20 lg:pt-48 lg:pb-28 overflow-hidden min-h-[80vh] flex items-center">
